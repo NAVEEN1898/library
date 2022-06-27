@@ -1,0 +1,16 @@
+<h1>form page</h1>
+<%= form_with model: [:admin, @book]  do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :author %><br>
+    <%= form.text_area :author %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

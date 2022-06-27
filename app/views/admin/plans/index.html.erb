@@ -1,0 +1,11 @@
+
+<h1>Our Plans</h1>
+<%= link_to "Exit", users_path %>
+<ul>
+  <% @plans.each do |plan| %>
+    <li>
+      <%= link_to plan.plan_name,  admin_plan_path( id: plan.id) %>
+    </li>
+  <% end %>
+</ul>
+

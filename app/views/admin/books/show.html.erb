@@ -1,0 +1,22 @@
+
+<h1><%= @book.name %></h1>
+
+<p><%= @book.author %></p>
+
+<ul>
+  <% if current_user.admin? %>
+    <li><%= link_to "Edit", edit_admin_book_path(id: @book.id) %></li>
+    <li><%= link_to "Destroy", admin_book_path(id: @book.id), data: {
+                      method: :delete,
+                      confirm: "Are you sure?"
+                    } %></li>
+  <% else %>
+    <% if(current_user.plan_id != nil) %>
+      <%= link_to 'Issue Book',users_path(book_id: @book.id, user_id:current_user.id), method: :post %>
+    <% else %>
+      <%= link_to "Plans", admin_plans_path %></br>
+    <% end %> 
+                    
+  <% end %> 
+
+</ul>
