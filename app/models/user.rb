@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   belongs_to :plan, optional:true
   has_many :issues  
+
+  #paginates_per 2
    # has_one :user_plan
    # has_one :plan , through: :user_plan
 

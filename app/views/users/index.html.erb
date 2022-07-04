@@ -6,36 +6,29 @@
   <%= link_to "Add Books", new_admin_book_path %>
   <%= link_to "Add Plan", new_admin_plan_path %> 
   <%= link_to "Our Plans", admin_plans_path %></br></br>
-  <%#= button_to "Search", search_path %>
-  <%= render "search" %>  
-    <!-- Books --> 
-  <h3>All Books</h3>
-  
-  <% @books.each do |book| %>
-    <li>
-      <%= link_to book.name, admin_book_path( id: book.id) %>
-    </li>
-  <% end %><br/>
-
+  <%= render "search" %>
 <% else %>
-
-<ul>
-  <h1>User</h1>
-  <%= render "admin/books/search_book" %>
-  <% if(current_user.plan_id != nil) %>
-    <%= "Already have plan" %>
-  <% else %>
-    <%= link_to "Plans", admin_plans_path %></br>
-  <% end %> 
-
-  
-
-  <h3>All Books</h3>
-
-  <% @books.each do |book| %>
-    <li>
-      <%= link_to book.name, admin_book_path( id: book.id) %>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <h1>User</h1>
+    <%= render "admin/books/search_book" %>
+    <% if(current_user.plan_id != nil) %>
+      <%= "Already have plan" %>
+    <% else %>
+      <%= link_to "Plans", admin_plans_path %></br>
+    <% end %> 
+  </ul>
 <% end %>
+
+<h3>All Books</h3>
+ <%= paginate @books %>
+
+ <% @books.each do |book| %>
+   <% if book.image.attached? %>
+     <image src="<%=(url_for(book.image))%>", style='height:20vw;width:15vw;'>
+   <% end %>
+   <li>
+     <%= link_to book.name, admin_book_path( id: book.id) %>
+   </li>
+ <% end %>
+
+ <%#= render "admin/books/index" %>

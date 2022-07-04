@@ -1,6 +1,7 @@
-
+<% if @book.image.attached? %>
+    <image src="<%=(url_for(@book.image))%>", , style='height:20vw;width:15vw;'>
+<% end %><br>
 <h1><%= @book.name %></h1>
-
 <p><%= @book.author %></p>
 
 <ul>

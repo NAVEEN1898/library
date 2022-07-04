@@ -3,7 +3,8 @@
 module Admin
   class BooksController < ApplicationController
     def index
-      @books = Book.all
+      byebug
+      @books = Book.order(:id).page params[:page]
     end
 
     def show
@@ -42,7 +43,6 @@ module Admin
       @book = Book.find(params[:id])
       @book.destroy
       redirect_to root_path
-      #render :index
     end
 
     def search
@@ -54,7 +54,7 @@ module Admin
     private
 
     def book_params
-      params.require(:book).permit(:name, :author)
+      params.require(:book).permit(:name, :author, :image)
     end
   end
 end

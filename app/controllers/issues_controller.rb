@@ -1,7 +1,8 @@
 class IssuesController < ApplicationController
   def index
-      @books = Book.all
+      #@books = Book.all
       #check_book_availability
+      @books = Book.order(:id).page params[:page]
   end
 
   def new 
@@ -9,14 +10,13 @@ class IssuesController < ApplicationController
   end
 
   def create
-    #byebug
     @issue = Issue.new(book_id: params[:book_id], user_id: params[:user_id])
-      if @issue.save
-        flash[:notice] = "Issue book successfully"
-        redirect_to issues_path, notice: "Issue book succesfully"
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @issue.save
+      flash.now[:notice] = "Issue book successfully"
+      redirect_to issues_path, notice: "Issue book succesfully"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # def buy 

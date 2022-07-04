@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
    before_action :authenticate_user!
   def index
-    @books = Book.all 
-    @plans = Plan.all 
+    
     @users = User.all
+    @books = Book.order(:id).page params[:page]
+
   end
 
   def buy 
-    user = User.find_by_id params[:user][:id]
-    #byebug
-    if user.update(plan_id: params[:user][:plan_id])
-      redirect_to issues_path
+    @user = User.find_by_id params[:user][:id]
+    if @user.update(plan_id: params[:user][:plan_id])
+      #byebug
+      UserMailer.with(user: @user).welcome_email.deliver_later
+      redirect_to issues_path, notice: "Mail send succesfully"
     else 
       render :buy, status: :unprocessable_entity
     end

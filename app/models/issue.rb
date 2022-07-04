@@ -1,4 +1,5 @@
 class Issue < ApplicationRecord
+	
 	belongs_to :user
 	#belongs_to :book
 	# after_save :issue_book

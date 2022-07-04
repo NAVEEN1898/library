@@ -9,7 +9,6 @@ module Admin
 
     def show
       @plan = Plan.find(params[:id])
-     
     end
 
     def new
@@ -33,7 +32,6 @@ module Admin
 
     def update
       @plan = Plan.find(params[:id])
-
       if @plan.update(plan_params)
         redirect_to admin_plans_path
       else

@@ -3,10 +3,10 @@
 <% if @user.exists? %>
 	<% @user.each do |user| %>
 	<%# byebug %>
-		<p> Email </p>
+		<p> Email: </p>
 		<%=  user.email %>
 
-		<p> Plan</p>
+		<p> Plan: </p>
 		<%=  user.plan.plan_name %>
 	<% end %>
 <% else %>
