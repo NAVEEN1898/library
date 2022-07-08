@@ -2,8 +2,9 @@
 
 module Admin
   class BooksController < ApplicationController
+    before_action :authenticate_user!
+
     def index
-      byebug
       @books = Book.order(:id).page params[:page]
     end
 
@@ -16,12 +17,13 @@ module Admin
     end
 
     def create
+      # byebug
       @book = Book.new(book_params)
-        if @book.save
-          redirect_to admin_books_path
-        else
-          render :new, status: :unprocessable_entity
-        end
+      if @book.save
+        redirect_to admin_books_path
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
 
     def edit
@@ -40,15 +42,15 @@ module Admin
     end
 
     def destroy
+      # byebug
       @book = Book.find(params[:id])
       @book.destroy
       redirect_to root_path
     end
 
     def search
-    #  byebug
-      #@params = params[:search]
-      @books = Book.all.where("name LIKE :search OR author LIKE :search", search: "%#{params[:search]}%")
+      # byebug
+      @books = Book.all.where('name LIKE :search OR author LIKE :search', search: "%#{params[:search]}%")
     end
 
     private
