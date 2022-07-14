@@ -52,8 +52,6 @@ RSpec.describe Admin::BooksController, type: :controller do
     it 'destroy book(book_id)' do
       delete :destroy, params: { id: book.id }
       expect(response.status).to eq(302)
-      # expect(Book.count).to eq(0)
-      # expect(response).to have_http_status(:redirect)
     end
   end
 

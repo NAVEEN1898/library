@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -61,7 +63,7 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-   config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
   config.include Warden::Test::Helpers
   # config.include Devise::Test::ControllerHelpers

@@ -17,7 +17,6 @@ module Admin
     end
 
     def create
-      # byebug
       @book = Book.new(book_params)
       if @book.save
         redirect_to admin_books_path
@@ -27,7 +26,6 @@ module Admin
     end
 
     def edit
-      # byebug
       @book = Book.find(params[:id])
     end
 
@@ -42,14 +40,12 @@ module Admin
     end
 
     def destroy
-      # byebug
       @book = Book.find(params[:id])
       @book.destroy
       redirect_to root_path
     end
 
     def search
-      # byebug
       @books = Book.all.where('name LIKE :search OR author LIKE :search', search: "%#{params[:search]}%")
     end
 
