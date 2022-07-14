@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :plans
   end
 
-  resources :issues
-  resources :users
+  resources :issues, only: [:index, :new]
+  resources :users 
   
-end
+end 
