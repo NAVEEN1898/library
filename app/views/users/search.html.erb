@@ -2,7 +2,6 @@
 <h2>search result </h2>
 <% if @user.exists? %>
 	<% @user.each do |user| %>
-	<%# byebug %>
 		<p> Email: </p>
 		<%=  user.email %>
 

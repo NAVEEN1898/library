@@ -3,7 +3,6 @@
 module Admin
   class BooksController < ApplicationController
     def index
-      byebug
       @books = Book.order(:id).page params[:page]
     end
 
@@ -25,7 +24,6 @@ module Admin
     end
 
     def edit
-      # byebug
       @book = Book.find(params[:id])
     end
 
@@ -46,8 +44,6 @@ module Admin
     end
 
     def search
-    #  byebug
-      #@params = params[:search]
       @books = Book.all.where("name LIKE :search OR author LIKE :search", search: "%#{params[:search]}%")
     end
 

@@ -26,7 +26,6 @@ module Admin
     end
 
     def edit
-      # byebug
       @plan = Plan.find(params[:id])
     end
 
@@ -43,7 +42,6 @@ module Admin
       @plan = Plan.find(params[:id])
       @plan.destroy
       redirect_to admin_plans_path
-      #render :index
     end
 
     private 
