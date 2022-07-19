@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def buy
     @user = User.find_by_id params[:user][:id]
-    if @user.update(plan_id: params[:user][:plan_id], expiry: true, expiry_date: Time.now.to_date)
+    if @user.update(plan_id: params[:user][:plan_id], expiry: true, plan_buy_date: Time.now.to_date)
       UserMailer.with(user: @user).welcome_email.deliver_later
       redirect_to issues_path, notice: 'Mail send succesfully'
     else
