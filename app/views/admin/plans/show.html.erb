@@ -12,8 +12,6 @@
     <li><%= link_to "All Users", all_users_path(id: @plan.id) %> </li>     
   <% else %>
       <%= link_to "Buy now", buy_path(user: {id: current_user.id, plan_id: @plan.id}) %>
-      
-     
   <% end %>
 </ul>
 

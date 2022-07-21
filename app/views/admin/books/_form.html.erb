@@ -15,6 +15,12 @@
     <%= form.file_field :image %>
   </div>
   <br>
+  <div> 
+    <%= form.fields_for :tags, @book.tags.build do |nested| %>
+      <%= nested.label :hash_tag %><br>
+      <%s= nested.text_field :hash_tag %>
+    <% end %> 
+  </div>
   <div>
     <%= form.submit %>
   </div>

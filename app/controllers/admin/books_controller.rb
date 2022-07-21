@@ -18,6 +18,7 @@ module Admin
 
     def create
       @book = Book.new(book_params)
+      byebug
       if @book.save
         redirect_to admin_books_path
       else
@@ -41,6 +42,7 @@ module Admin
 
     def destroy
       @book = Book.find(params[:id])
+      byebug
       @book.destroy
       redirect_to root_path
     end
@@ -52,7 +54,7 @@ module Admin
     private
 
     def book_params
-      params.require(:book).permit(:name, :author, :image)
+      params.require(:book).permit(:name, :author, :image, tags_attributes: [:hash_tag] )
     end
   end
 end

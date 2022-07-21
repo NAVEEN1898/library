@@ -6,4 +6,6 @@ class Book < ApplicationRecord
   has_one :issue
   has_one_attached :image
   paginates_per 2
+  has_many :tags 
+  accepts_nested_attributes_for :tags
 end
