@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 gem 'letter_opener', group: :development
+gem 'ckeditor'
 
 group :test do
   gem 'database_cleaner-active_record'

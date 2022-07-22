@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   root to: 'users#index'
   get 'buy', to: 'users#buy'

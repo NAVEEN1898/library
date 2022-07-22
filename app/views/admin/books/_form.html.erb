@@ -1,4 +1,5 @@
 <h1>form page</h1>
+<%= javascript_include_tag Ckeditor.cdn_url %>
 <%= form_with model: [:admin, @book]  do |form| %>
   <div>
     <%= form.label :name %><br>
@@ -7,7 +8,8 @@
 
   <div>
     <%= form.label :author %><br>
-    <%= form.text_area :author %>
+    <%#= form.cktext_area :author %>
+    <%= form.cktext_area :author, :class => 'anyclass', :ckeditor => {:language => 'uk', :uiColor => '#AADC6E', :toolbar => 'mini'} %>
   </div>
 
   <div>
@@ -18,7 +20,7 @@
   <div> 
     <%= form.fields_for :tags, @book.tags.build do |nested| %>
       <%= nested.label :hash_tag %><br>
-      <%s= nested.text_field :hash_tag %>
+      <%= nested.text_field :hash_tag %>
     <% end %> 
   </div>
   <div>
