@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/stympy/faker
+  revision: 2333f9ee4a4e1d8329e19f9e4b07e927648add7c
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,6 +49,11 @@ GEM
     activejob (6.1.6)
       activesupport (= 6.1.6)
       globalid (>= 0.3.6)
+    activemerchant (1.126.0)
+      activesupport (>= 4.2)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
     activemodel (6.1.6)
       activesupport (= 6.1.6)
     activerecord (6.1.6)
@@ -80,6 +92,10 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -263,11 +279,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activemerchant
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  database_cleaner-active_record
   devise
   factory_bot_rails
+  faker!
   jbuilder (~> 2.7)
   kaminari
   letter_opener

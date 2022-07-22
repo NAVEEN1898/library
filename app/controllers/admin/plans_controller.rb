@@ -2,6 +2,7 @@
 
 module Admin
   class PlansController < ApplicationController
+    before_action :authenticate_user!
 
     def index
       @plans = Plan.all
@@ -15,10 +16,9 @@ module Admin
       @plan = Plan.new
     end
 
-    def create
+    def create  
       @plan = Plan.new(plan_params)
       if @plan.save
-        flash[:notice] = "Buy successfully"
         redirect_to admin_plans_path
       else
         render :new, status: :unprocessable_entity
@@ -26,7 +26,6 @@ module Admin
     end
 
     def edit
-      # byebug
       @plan = Plan.find(params[:id])
     end
 
@@ -43,12 +42,12 @@ module Admin
       @plan = Plan.find(params[:id])
       @plan.destroy
       redirect_to admin_plans_path
-      #render :index
     end
 
-    private 
-      def plan_params
-        params.require(:plan).permit(:plan_name, :plan_description, :plan_rate)
-      end
+    private
+
+    def plan_params
+      params.require(:plan).permit(:plan_name, :plan_description, :plan_rate)
+    end
   end
 end
