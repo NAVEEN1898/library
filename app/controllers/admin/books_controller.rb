@@ -52,7 +52,7 @@ module Admin
     private
 
     def book_params
-      params.require(:book).permit(:name, :author, :image)
+      params.require(:book).permit(:name, :author, :image, :tag_list)
     end
   end
 end

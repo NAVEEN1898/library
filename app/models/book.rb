@@ -6,4 +6,6 @@ class Book < ApplicationRecord
   has_one :issue
   has_one_attached :image
   paginates_per 2
+  acts_as_taggable_on :tags
+  acts_as_taggable_on :skills, :interests
 end
