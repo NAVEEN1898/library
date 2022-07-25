@@ -5,8 +5,8 @@
   <% @books.each do |book| %>
     <li>
         <% if book.image.attached? %>
-        <%# byebug %>
           <image src="<%=(url_for(book.image))%>" style="height:20vw;width:15vw;">
+          <%= rating_for book, 'book' %>
         <% end %><br>
         <%= link_to book.name, admin_book_path( id: book.id) %>
     </li>

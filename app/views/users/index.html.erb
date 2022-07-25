@@ -2,7 +2,6 @@
 <%= link_to "logout", destroy_user_session_path %>
 <% if current_user.admin? %>
   <h1>Admin</h1>
- 
   <%= link_to "Add Books", new_admin_book_path %>
   <%= link_to "Add Plan", new_admin_plan_path %> 
   <%= link_to "Our Plans", admin_plans_path %></br></br>
@@ -26,9 +25,11 @@
    <% if book.image.attached? %>
      <image src="<%=(url_for(book.image))%>", style='height:20vw;width:15vw;'>
    <% end %>
-   <li>
-     <%= link_to book.name, admin_book_path( id: book.id) %>
-   </li>
+  <ul>
+    <li>
+       <%= link_to book.name, admin_book_path( id: book.id) %>
+    </li>
+  </ul> 
  <% end %>
 
  
